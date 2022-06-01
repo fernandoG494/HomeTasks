@@ -7,7 +7,7 @@ class MyPromise extends Promise {   // extends explicit class from Promise
     // when we make an extend from other class, the extender class
     // takes all the methods from the extended class, here we add
     // the method that is required for the task, in this case 'syncThen'
-    async synchThen(funct) { //funct is an auxiliar variable for the callback function
+    async syncThen(funct) { //funct is an auxiliar variable for the callback function
         return this.then(() => funct());
         // this point could be confusing but the idea is the next:
         // syncThen get the callback function, every Promise should
@@ -21,10 +21,10 @@ class MyPromise extends Promise {   // extends explicit class from Promise
 let promise = new MyPromise((resolve)=> {
         console.log(1);
         resolve(); 
-    }).synchThen(() => { 
+    }).syncThen(() => { 
         console.log(2); 
     }).then(() => { 
         console.log(3); 
     });
 
-console.log(4); //1,2,4,3
+console.log(4);
